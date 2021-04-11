@@ -20,17 +20,20 @@ class SearchBooks extends Component {
         this.setState(() => ({
             query: query
         }));
-        BooksAPI.search(query)
-            .then((res) => {
-                this.setState((oldstate) => ({
-                    books: res
-                }));
-            });
+        if (query) {
+            BooksAPI.search(query)
+                .then((res) => {
+                    this.setState((oldstate) => ({
+                        books: res
+                    }));
+                });
+        }
+
     }
 
     render() {
         let books = [];
-        if (!this.state.books.error)
+        if (this.state.query && !this.state.books.error)
             books = this.state.books.map((book) => this.updateBookShelf(book));
         return (
             <div className="search-books">
