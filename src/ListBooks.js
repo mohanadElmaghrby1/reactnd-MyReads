@@ -4,8 +4,13 @@ import PropTypes from 'prop-types';
 
 class ListBooks extends Component {
 
+
+    filterCorruptedBooks = (books) => {
+        return books.filter((book) => book.author || book.imageLinks)
+    }
+
     render() {
-        const { books } = this.props;
+        const books = this.filterCorruptedBooks(this.props.books);
         return (
             <ol className="books-grid">
                 {books.map((book) => (
