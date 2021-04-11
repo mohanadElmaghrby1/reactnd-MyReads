@@ -4,9 +4,6 @@ import PropTypes from 'prop-types';
 
 class ListBooks extends Component {
 
-    updateBookShelf = (book, newShelf) => {
-        this.props.onUpdateBookShelf(book, newShelf);
-    }
     render() {
         const { books } = this.props;
         return (
@@ -15,7 +12,7 @@ class ListBooks extends Component {
                     <BookItem
                         key={book.id}
                         book={book}
-                        onUpdateBookShelf={this.updateBookShelf} />
+                        onUpdateBookShelf={this.props.onUpdateBookShelf} />
                 ))}
             </ol>
         );
