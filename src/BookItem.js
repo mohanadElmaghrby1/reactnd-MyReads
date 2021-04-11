@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
+
 const BookItem = (props) => {
     return (
         <li>
@@ -26,4 +28,8 @@ const BookItem = (props) => {
     );
 };
 
+BookItem.propTypes = {
+    book: PropTypes.object.isRequired,
+    onUpdateBookShelf: PropTypes.func.isRequired
+};
 export default BookItem;

@@ -1,9 +1,7 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
 import './App.css'
-import BookItem from './BookItem';
 import * as BooksAPI from './BooksAPI'
-import BookShelf from './BookShelf';
+import BooksShelf from './BooksShelf';
 
 class BooksApp extends React.Component {
   state = {
@@ -17,7 +15,7 @@ class BooksApp extends React.Component {
     books: []
   }
 
-  bookShelfs = [{ id: 'currentlyReading', name: 'Currently Reading' }
+  bookshelves = [{ id: 'currentlyReading', name: 'Currently Reading' }
     , { id: 'wantToRead', name: 'Want To Ready' }, { id: 'read', name: 'Read' }]
 
   updateBookShelf = (book, newShelf) => {
@@ -43,9 +41,6 @@ class BooksApp extends React.Component {
   }
 
   render() {
-    this.bookShelfs.forEach((shelf) => {
-      console.log('shef', shelf)
-    })
     return (
       <div className="app">
         {this.state.showSearchPage ? (
@@ -76,8 +71,8 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
-                {this.bookShelfs.map((shelf) => (
-                  <BookShelf
+                {this.bookshelves.map((shelf) => (
+                  <BooksShelf
                     key={shelf.id}
                     books={this.state.books} shelf={shelf}
                     onUpdateBookShelf={this.updateBookShelf} />
@@ -90,7 +85,7 @@ class BooksApp extends React.Component {
           </div>
         )}
       </div>
-    )
+    );
   }
 }
 

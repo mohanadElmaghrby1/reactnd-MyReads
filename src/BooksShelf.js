@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import ListBooks from "./ListBooks";
+import PropTypes from 'prop-types';
 
-class BookShelf extends Component {
+class BooksShelf extends Component {
     render() {
         const { shelf, books } = this.props;
         const showingBooks = books.filter((book) => book.shelf === shelf.id);
@@ -18,5 +19,9 @@ class BookShelf extends Component {
         );
     }
 }
-
-export default BookShelf;
+BooksShelf.propTypes = {
+    shelf: PropTypes.object.isRequired,
+    books: PropTypes.array.isRequired,
+    onUpdateBookShelf: PropTypes.func.isRequired
+};
+export default BooksShelf;
